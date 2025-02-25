@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Portfolio Details - Amoeba Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Lato:400,300,700,900" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo me-auto">
+        <h1><a href="index.html">Amarilis Oaxaca</a></h1>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Inicio</a></li>
+          <li><a class="nav-link scrollto" href="#about">Nosotros</a></li>
+          <li><a class="nav-link scrollto" href="#portfolio">Catálogo</a></li>
+          <li><a class="nav-link scrollto" href="#team">Pedidos</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contacto</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End #header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Detalles</h2>
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li>Portfolio Details</li>
+          </ol>
+        </div>
+      </div>
+    </section><!-- Breadcrumbs -->
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center" id="product-images">
+                <!-- Las imágenes del producto se insertarán aquí con JavaScript -->
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info" id="product-info">
+              <!-- La información del producto se insertará aquí con JavaScript -->
+            </div>
+            <div class="portfolio-description" id="product-description">
+              <!-- Descripción del producto -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Details Section -->
+
+  </main><!-- End #main -->
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Amoeba</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End #footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // Obtener el parámetro 'id' de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+
+    // Definir los productos disponibles y sus detalles
+    const products = {
+      crinum: {
+        name: 'Crinum Blanco',
+        description: 'Un hermoso crinum blanco con hojas largas y floración espectacular.',
+        images: [
+          'assets/img/portfolio/crinum.jpeg',
+        ],
+        category: 'Crinum',
+        color: 'Blanco',
+        precio: '$100',
+      },
+      blanco: {
+        name: 'Blanco',
+        description: 'Una hermosa amarilis blanca con un centro verdoso y floración espectacular.',
+        images: [
+          'assets/img/portfolio/blanco.jpeg',
+        ],
+        category: 'Amarilis sencilla',
+        color: 'Blanco',
+        precio: '$125',
+      },
+      rojo: {
+        name: 'Rojo',
+        description: 'Una hermosa amarilis roja con un centro de color rojo oscuro y floración espectacular.',
+        images: [
+          'assets/img/portfolio/rojo.jpeg',
+        ],
+        category: 'Amarilis sencilla',
+        color: 'Rojo',
+        precio: '$125',
+      },
+      hibridorojo: {
+        name: 'Híbrido rojo',
+        description: 'Una hermosa amarilis roja jaspeada de floración espectacular.',
+        images: [
+          'assets/img/portfolio/hibridorojo.jpg',
+        ],
+        category: 'Amarilis sencilla',
+        color: 'Rojo jaspeado',
+        precio: '$125',
+      },
+      montecarlo: {
+        name: 'Híbrido Montecarlo',
+        description: 'Una hermosa amarilis con rayas blancas y rojas de floración espectacular.',
+        images: [
+          'assets/img/portfolio/montecarlo.jpg',
+        ],
+        category: 'Amarilis sencilla',
+        color: 'Rojo con rayas blancas',
+        precio: '$125',
+      },
+      // Agrega más productos aquí como 'productId': {...}
+    };
+
+    // Obtener los detalles del producto según el 'id' de la URL
+    const product = products[productId];
+
+    if (product) {
+      // Insertar los detalles del producto
+      document.getElementById('product-info').innerHTML = `
+        <h3>Información del Producto</h3>
+        <ul>
+          <li><strong>Categoría</strong>: ${product.category}</li>
+          <li><strong>Color</strong>: ${product.color}</li>
+          <li><strong>Precio</strong>: ${product.precio}</li>
+        </ul>
+      `;
+      document.getElementById('product-description').innerHTML = `
+        <h2>${product.name}</h2>
+        <p>${product.description}</p>
+      `;
+      
+      // Insertar las imágenes del producto
+      const imageContainer = document.getElementById('product-images');
+      product.images.forEach(image => {
+        const swiperSlide = document.createElement('div');
+        swiperSlide.classList.add('swiper-slide');
+        swiperSlide.innerHTML = `<img src="${image}" alt="${product.name}">`;
+        imageContainer.appendChild(swiperSlide);
+      });
+    } else {
+      // Si el producto no existe, mostrar un mensaje de error
+      document.getElementById('product-info').innerHTML = '<p>Producto no encontrado.</p>';
+    }
+  </script>
+
+</body>
+
+</html>
