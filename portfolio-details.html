@@ -140,6 +140,7 @@
         description: 'Una hermosa amarilis blanca con un centro verdoso y floración espectacular.',
         images: [
           'assets/img/portfolio/blanco.jpeg',
+          'assets/img/portfolio/blanco2.jpeg',
         ],
         category: 'Amarilis sencilla',
         color: 'Blanco',
@@ -175,6 +176,66 @@
         color: 'Rojo con rayas blancas',
         precio: '$125',
       },
+      greenvalley: {
+        name: 'Green Valley',
+        description: 'Una hermosa amarilis con flores de color verde pálido con sutiles toques de blanco.',
+        images: [
+          'assets/img/portfolio/greenvalley.webp',
+        ],
+        category: 'Amarilis sencilla',
+        color: 'color verde pálido',
+        precio: '$300',
+      },
+      kingstar: {
+        name: 'King Star',
+        description: 'Una hermosa amarilis con pétalos de color salmón con rayas blancas y centro verde',
+        images: [
+          'assets/img/portfolio/kingstar.jpeg',
+        ],
+        category: 'Amarilis sencilla',
+        color: 'Salmón',
+        precio: '$280',
+      },
+      papilio: {
+        name: 'Papilio',
+        description: 'Una hermosa amarilis con venas de color verde lima brillante y rojo oscuro.',
+        images: [
+          'assets/img/portfolio/papilio.jpg',
+        ],
+        category: 'Amarilis sencilla',
+        color: 'verde y rojo oscuro',
+        precio: '$300',
+      },
+      superstar: {
+        name: 'Superstar',
+        description: 'Una hermosa amarilis de color blanco con rayas rojas y de floración espectacular.',
+        images: [
+          'assets/img/portfolio/superstar.webp',
+        ],
+        category: 'Amarilis sencilla',
+        color: 'Blanco con rojo',
+        precio: '$260',
+      },
+      terracotta: {
+        name: 'Terracotta Star',
+        description: 'Una hermosa amarilis con un tono salmón y un centro de color verde.',
+        images: [
+          'assets/img/portfolio/terracotta.jpg',
+        ],
+        category: 'Amarilis sencilla',
+        color: 'Salmón y verde',
+        precio: '$260',
+      },
+      apple: {
+        name: 'Apple Bloosom',
+        description: 'Una hermosa amarilis rosa con un centro blanco.',
+        images: [
+          'assets/img/portfolio/apple.webp',
+        ],
+        category: 'Amarilis sencilla',
+        color: 'Rosa',
+        precio: '$260',
+      },
       presidente: {
         name: 'Blanco con rayitas rojas',
         description: 'Una hermosa amarilis de color blanco con rayitas rojas.',
@@ -193,7 +254,7 @@
         ],
         category: 'Amarilis sencilla',
         color: 'naranja',
-        precio: '$240',
+        precio: '$260',
       },
       king: {
         name: 'Double King',
@@ -203,7 +264,7 @@
         ],
         category: 'Amarilis doble',
         color: 'rojo oscuro',
-        precio: '$245',
+        precio: '$260',
       },
       benito: {
         name: 'Benito',
@@ -213,17 +274,17 @@
         ],
         category: 'Amarilis doble',
         color: 'anaranjado',
-        precio: '$240',
+        precio: '$260',
       },
       lady: {
         name: 'Lady Jane',
         description: 'Una hermosa amarilis de color rosa con pequeñas rayas blancas.',
         images: [
-          'assets/img/portfolio/lady.jpg',
+          'assets/img/portfolio/jane.jpg',
         ],
         category: 'Amarilis doble',
         color: 'rosa',
-        precio: '$240',
+        precio: '$260',
       },
       marilyn: {
         name: 'Marilyn',
@@ -233,17 +294,19 @@
         ],
         category: 'Amarilis doble',
         color: 'blanco con verde',
-        precio: '$250',
+        precio: '$280',
       },
       delicious: {
         name: 'Double Delicious',
         description: 'Una hermosa amarilis de color rojo escarlata con un blanco brillante en el centro.',
         images: [
           'assets/img/portfolio/delicious.jpg',
+          'assets/img/portfolio/delicious3.jpeg',
+          'assets/img/portfolio/delicious_video.mp4',
         ],
         category: 'Amarilis doble',
         color: 'rojo escarlata',
-        precio: '$250',
+        precio: '$280',
       },
       // Agrega más productos aquí como 'productId': {...}
     };
@@ -269,10 +332,21 @@
       // Insertar las imágenes del producto
       const imageContainer = document.getElementById('product-images');
       product.images.forEach(image => {
-        const swiperSlide = document.createElement('div');
-        swiperSlide.classList.add('swiper-slide');
-        swiperSlide.innerHTML = `<img src="${image}" alt="${product.name}">`;
-        imageContainer.appendChild(swiperSlide);
+        const fileExtension = image.split('.').pop();
+        if (fileExtension === "mp4") {
+          const swiperSlide = document.createElement('div');
+          swiperSlide.classList.add('swiper-slide');
+          swiperSlide.innerHTML = `<video controls width="80%" height="auto">
+            <source src="${image}" type="video/mp4">
+            Tu navegador no soporta la reproducción de video.
+          </video`;
+          imageContainer.appendChild(swiperSlide);
+        } else {
+          const swiperSlide = document.createElement('div');
+          swiperSlide.classList.add('swiper-slide');
+          swiperSlide.innerHTML = `<img src="${image}" alt="${product.name}">`;
+          imageContainer.appendChild(swiperSlide);
+        }
       });
     } else {
       // Si el producto no existe, mostrar un mensaje de error
