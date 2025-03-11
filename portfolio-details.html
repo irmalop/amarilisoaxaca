@@ -141,6 +141,7 @@
         images: [
           'assets/img/portfolio/blanco.jpeg',
           'assets/img/portfolio/blanco2.jpeg',
+          'assets/img/portfolio/blanco2.blancofb',
         ],
         category: 'Amarilis sencilla',
         color: 'Blanco',
@@ -341,7 +342,13 @@
             Tu navegador no soporta la reproducción de video.
           </video`;
           imageContainer.appendChild(swiperSlide);
-        } else {
+        } 
+        if (fileExtension === "blancofb"){
+            const swiperSlide = document.createElement('div');
+            swiperSlide.classList.add('swiper-slide');
+            swiperSlide.innerHTML = `<iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F717797040471712%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>`;
+        }
+        else {
           const swiperSlide = document.createElement('div');
           swiperSlide.classList.add('swiper-slide');
           swiperSlide.innerHTML = `<img src="${image}" alt="${product.name}">`;
