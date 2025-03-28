@@ -88,6 +88,8 @@ document.getElementById("contact-form").addEventListener("submit", function(even
   
   let form = event.target;
   let formData = new FormData(form);
+  let loadingElement = document.querySelector(".php-email-form .loading");
+  loadingElement.style.display = "block";
 
   // Convierte FormData en un objeto JSON
   let jsonData = {};
@@ -104,6 +106,8 @@ document.getElementById("contact-form").addEventListener("submit", function(even
   })
   .then(response => response.text())
   .then(data => {
+    console.log(data);
+    console.log("DATA");
       if (data === "Success") {
           document.getElementById("success-message").style.display = "block";
           form.reset(); // Limpia el formulario
@@ -113,5 +117,10 @@ document.getElementById("contact-form").addEventListener("submit", function(even
   })
   .catch(error => {
       document.getElementById("error-message").style.display = "block";
-  });
+  })
+  .finally(() => {
+    // Ocultar el ícono de carga después de que termine el proceso
+    loadingElement.style.display = "none";
 });
+});
+

@@ -53,6 +53,7 @@
           <!-- <li><a class="nav-link scrollto" href="#services">Services</a></li> -->
           <li><a class="nav-link scrollto" href="#portfolio">Catálogo</a></li>
           <li><a class="nav-link scrollto" href="#team">Envíos</a></li>
+          <li><a class="nav-link scrollto" href="#creartestimonio">Testimonio</a></li>
           <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
@@ -1040,30 +1041,42 @@
       </div>
     </section>
 
+    
     <!--<section id="testimonio" class="contact section-bg">
       <div class="container">
         <div class="section-title">
-          <h2>Testimonio</h2>
+          <h2>Testimonios de clientes</h2>
+          <div id="testimonios"></div>
+        </div>
+      </div>
+    </section>-->
+
+    <section id="creartestimonio" class="testimony section-pink">
+      <div class="container">
+        <div class="section-title">
+          <h2>Deja tu Testimonio 🌸</h2>
         </div>
         <div class="row">
-          <div class="col-lg-4 col-md-6">
-            <form class="php-email-form" id="formTestimonio">
+          <div class="col-lg-12 col-md-12">
+            <form class="testimony-form" id="formTestimonio">
+              <div class="loading" style="display: none;">Guardando testimonio...</div>
               <div class="form-group">
-                <input type="text" id="nombre" placeholder="Nombre" required>
+                <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
               </div>
               <div class="form-group mt-3">
-                <textarea id="opinion" placeholder="Escribe tu testimonio..." required></textarea>
+                <textarea id="opinion" class="form-control" placeholder="Escribe tu testimonio..." required></textarea>
               </div>
               <div class="form-group mt-3">
-                <input type="file" id="imagen" accept="image/*">
+                <input type="file" class="form-control" id="imagen" accept="image/*">
               </div>
               <div class="text-center"><button type="submit">Enviar Testimonio</button></div>
+              <div id="success-testimony" style="display: none; color: green;">Tu testimonio ha sido enviado. ¡Gracias!</div>
+              <div id="error-testimony" style="display: none; color: red;">Hubo un error. Inténtalo de nuevo.</div>
             </form>
           </div>
         </div>
-        
-        <div id="testimonios"></div>
-  </section>-->
+      </div>
+  </section>
 
     <!-- ======= Contact Us Section ======= -->
     <section id="contact" class="contact section-bg">
@@ -1082,10 +1095,10 @@
               <p>Venta de bulbos y plantas de amarilis y crinum</p>
               <div class="social-links">
                 <!-- <a href="#" class="twitter"><i class="bi bi-twitter"></i></a> -->
-                <a href="https://www.facebook.com/amariluzz96?mibextid=ZbWKwL" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="https://www.instagram.com/amarilis_oax/" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="https://www.tiktok.com/@amarilis.oaxaca?_t=ZS-8u7RF9LpZ6y&_r=1" class="tiktok"><i class="bi bi-tiktok"></i></a>
-                <a href="https://www.youtube.com/@amarilisoaxaca1" class="youtube"><i class="bi bi-youtube"></i></a>
+                <a href="https://www.facebook.com/amariluzz96?mibextid=ZbWKwL" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/amarilis_oax/" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.tiktok.com/@amarilis.oaxaca?_t=ZS-8u7RF9LpZ6y&_r=1" class="tiktok" target="_blank"><i class="bi bi-tiktok"></i></a>
+                <a href="https://www.youtube.com/@amarilisoaxaca" class="youtube" target="_blank"><i class="bi bi-youtube"></i></a>
                 <a href="https://wa.me/529516541721?text=Hola%20quiero%20información%20sobre%20los%20amarilis" target="_blank" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
 
                 <!-- <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a> -->
@@ -1117,6 +1130,7 @@
 
           <div class="col-lg-5 col-md-12">
             <form class="php-email-form" id="contact-form">
+              <div class="loading" style="display: none;">Guardando mensaje...</div>
               <div class="form-group">
                 <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" required>
               </div>
@@ -1133,7 +1147,7 @@
                 <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
               </div>
 
-              <div class="text-center"><button type="submit">Enviar Message</button></div>
+              <div class="text-center"><button type="submit">Enviar mensaje</button></div>
               <div id="success-message" style="display: none; color: green;">Tu mensaje ha sido enviado. ¡Gracias!</div>
               <div id="error-message" style="display: none; color: red;">Hubo un error. Inténtalo de nuevo.</div>
             </form>
@@ -1161,6 +1175,9 @@
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-one-page-bootstrap-template-amoeba/ -->
+        <a href="assets/pdf/Política de Privacidad y Términos y Condiciones.pdf" target="_blank" rel="noopener noreferrer">
+          Ver Política de Privacidad, Términos y Condiciones
+      </a>
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
@@ -1177,6 +1194,107 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+    document.getElementById("formTestimonio").addEventListener("submit", function(event) {
+        let loadingElement = document.querySelector(".testimony-form .loading");
+        loadingElement.style.display = "block";
+        event.preventDefault();
+        let form = event.target;
+
+        let nombre = document.getElementById("nombre").value;
+        let testimonio = document.getElementById("opinion").value;
+        let imagenInput = document.getElementById("imagen").files[0];
+
+        let imagenBase64 = null;
+        if (imagenInput) {
+            let reader = new FileReader();
+            reader.readAsDataURL(imagenInput);
+            reader.onload = function () {
+              imagenBase64 = reader.result.split(',')[1]; // Eliminar el prefijo "data:image/png;base64,"
+              // Aquí puedes llamar a otra función o continuar con el procesamiento de la imagen
+          };
+        }
+
+        let formData = new URLSearchParams();
+        formData.append("nombre", nombre);
+        formData.append("testimonio", testimonio);
+        if (imagenBase64) {
+            formData.append("imagen", imagenBase64);
+        }
+
+        fetch("https://script.google.com/macros/s/AKfycby-ToVGtEpp1M0mj6VPSYDkq-DouWpl0jVnBjBN2AnESX-lIssARAWs-jIDmXLWu5SH/exec", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+          console.log(data);
+          console.log("DATA");
+            if (data == "Guardado exitosamente") {
+              console.log("entro al if");
+                document.getElementById("success-testimony").style.display = "block";
+                form.reset(); // Limpia el formulario
+            } else {
+              console.log("entro al else")
+                document.getElementById("error-testimony").style.display = "block";
+            }
+        })
+        .catch(error => {
+          console.log(error);
+          console.log("ERROR");
+            document.getElementById("error-testimony").style.display = "block";
+        })
+        .finally(() => {
+          // Ocultar el ícono de carga después de que termine el proceso
+          loadingElement.style.display = "none";
+      });
+    });
+  </script>
+  <script>
+    // Reemplaza con la URL de tu Apps Script para obtener testimonios
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby-ToVGtEpp1M0mj6VPSYDkq-DouWpl0jVnBjBN2AnESX-lIssARAWs-jIDmXLWu5SH/exec";
+
+    function convertirEnlaceGoogleDrive(url) {
+      if (url.includes("drive.google.com/file/d/")) {
+          let id = url.split("/d/")[1].split("/")[0];
+          return `https://drive.google.com/uc?export=view&id=${id}`;
+      }
+      return url;  // Si la URL ya está bien, no la cambia
+    }
+  
+    /*async function cargarTestimonios() {
+      try {
+          const response = await fetch(SCRIPT_URL);
+          console.log(response)
+  
+          if (!response.ok) throw new Error("Error al obtener los datos");
+  
+          const testimonios = await response.json();
+          let testimoniosDiv = document.getElementById("testimonios");
+          testimoniosDiv.innerHTML = "";
+  
+          testimonios.forEach(t => {
+              let imagenURL = convertirEnlaceGoogleDrive(t.imagenURL);
+              let imagenHTML = imagenURL ? `<img src="${imagenURL}" alt="Imagen de ${t.nombre}" style="max-width: 200px; display: block;">` : "";
+              let testimonioHTML = `<div class="testimonio">
+                  <strong>${t.nombre}</strong>
+                  <p>${t.testimonio}</p>
+                  ${imagenHTML}
+              </div>`;
+              testimoniosDiv.innerHTML += testimonioHTML;
+          });
+  
+      } catch (error) {
+          console.error("Error cargando testimonios:", error);
+      }
+    }
+    
+    // Llamar la función al cargar la página
+    cargarTestimonios();*/
+  
+  </script>
+
+
 
 </body>
 
